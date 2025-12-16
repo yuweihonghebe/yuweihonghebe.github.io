@@ -1,0 +1,1612 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>亿帆出海 - 高质量广告素材，AI 一键搞定</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #000000;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: 
+                radial-gradient(ellipse at center top, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #000000 0%, #0a0a0a 100%);
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 71, 87, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.3s forwards;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: #a8a8a8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.6s forwards;
+        }
+
+        .hero-offer {
+            margin-bottom: 2rem;
+            padding: 16px 28px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            display: inline-block;
+            opacity: 0;
+            animation: slideUp 1s ease-out 0.8s forwards;
+        }
+
+        .hero-offer span {
+            color: #10b981;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: slideUp 1s ease-out 1s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Trusted By Section */
+        .trusted-by {
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .trusted-by h3 {
+            text-align: center;
+            color: #6b7280;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .trusted-logo {
+            font-size: 1.5rem;
+            color: #4b5563;
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+            position: relative;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.08) 0%, transparent 70%);
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stats-header p {
+            color: #a8a8a8;
+            font-size: 1.2rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 50px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.4rem;
+            color: #ffffff;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .stat-description {
+            color: #a8a8a8;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: #000000;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .features-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .features-header p {
+            font-size: 1.3rem;
+            color: #a8a8a8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 32px;
+            padding: 60px;
+            margin-bottom: 50px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-12px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature:hover::after {
+            opacity: 1;
+        }
+
+        .feature-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            margin-bottom: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .feature:nth-child(1) .feature-icon { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .feature:nth-child(2) .feature-icon { 
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .feature:nth-child(3) .feature-icon { 
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        .feature:nth-child(4) .feature-icon { 
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        .feature:nth-child(5) .feature-icon { 
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .feature h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .feature p {
+            color: #a8a8a8;
+            margin-bottom: 28px;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+
+        .feature-highlights {
+            list-style: none;
+        }
+
+        .feature-highlights li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 32px;
+            color: #d1d5db;
+            font-size: 1.05rem;
+        }
+
+        .feature-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .feature-visual {
+            height: 300px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .feature-visual.placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a8a8a8;
+            font-size: 1rem;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(20px);
+        }
+
+        .testimonial-content {
+            font-size: 1.1rem;
+            color: #d1d5db;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .testimonial-info h4 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.4rem;
+            margin-bottom: 3rem;
+            color: #a8a8a8;
+        }
+
+        .cta-offer {
+            margin-bottom: 3rem;
+        }
+
+        .cta-offer div {
+            display: inline-block;
+            padding: 16px 32px;
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+        }
+
+        .cta-offer span {
+            color: #10b981;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 120px 0;
+            background: #000000;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 70px;
+            border-radius: 32px;
+            backdrop-filter: blur(20px);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 28px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #d1d5db;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            font-size: 1rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #6b7280;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a0a0a;
+            /* border-top: 1px solid rgba(255, 255, 255, 0.1); */
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .footer-section h4 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #6b7280;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 { font-size: 3rem; }
+            .hero p { font-size: 1.2rem; }
+            .features-header h2 { font-size: 2.5rem; }
+            .feature-content { 
+                grid-template-columns: 1fr; 
+                gap: 40px;
+                /* text-align: center;  */
+            }
+            .feature { padding: 40px 30px; }
+            .form-container { 
+                padding: 50px 30px; 
+                margin: 0 10px;
+            }
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-section h2 { font-size: 2.5rem; }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .trusted-logos {
+                gap: 2rem;
+            }
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Counter animation */
+        .counter {
+            display: inline-block;
+        }
+        /* 下拉框 */
+        .custom-select-box,.custom-select-box1 {
+            position: relative;
+            width: 100%;
+            font-size: 16px;
+        }
+
+    .selected,.selected1 {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 12px;
+        padding: 16px;
+        font-size: 1rem;
+        color: #ffffff;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .selected.has-value,.selected1.has-value {
+      color: #FFF;
+    }
+
+    .arrow {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      font-size: 12px;
+      color: #FFF;
+    }
+
+    .options,.options1 {
+      display: none;
+      position: absolute;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      background: #1B1C1B;
+      margin-top: 4px;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .option {
+      padding: 10px 14px;
+      cursor: pointer;
+      color: #FFF;
+    }
+
+    .option:hover {
+      background-color: #151515;
+    }
+    /* 遮罩层 */
+    .alert-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      display: none;
+    }
+
+    /* 弹出框 */
+    .alert-box {
+      background: white;
+      padding: 24px 30px;
+      border-radius: 10px;
+      min-width: 320px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .alert-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .alert-icon {
+      font-size: 24px;
+    }
+
+    .alert-box p {
+      margin: 10px 0 20px;
+      font-size: 16px;
+      color: #000;
+    }
+
+    .alert-box button {
+      padding: 8px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .alert-box.success button {
+      background-color: #4caf50;
+    }
+
+    .alert-box.error button {
+      background-color: #f44336;
+    }
+
+    .alert-box.warning button {
+      background-color: #ff9800;
+    }
+
+    .alert-box.success   { border-left: 6px solid #4caf50; }
+    .alert-box.error     { border-left: 6px solid #f44336; }
+    .alert-box.warning   { border-left: 6px solid #ff9800; }
+
+    /* 遮罩层 */
+    #overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    #overlay_buy {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    /* 弹框 */
+    #modal {
+      position: relative;
+      background: rgba(71, 70, 70, 0.9);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    #modal img {
+      max-width: 80vw;
+      max-height: 80vh;
+      display: block;
+    }
+    #modal_buy {
+      position: relative;
+      background: rgba(71, 70, 70, 0.9);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    #modal_buy img {
+      max-width: 80vw;
+      max-height: 80vh;
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* 购买积分模块 */
+    .payment-section { 
+        padding: 100px 0; 
+        background: rgba(255,255,255,0.02); 
+    }
+    .payment-section h2 { 
+        text-align: center; 
+        font-size: 2.5rem; 
+        margin-bottom: 1rem; 
+        background: linear-gradient(135deg,#fff 0%,#a8a8a8 100%); 
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent; 
+        background-clip: text; 
+        font-weight: 700; 
+    }
+    .payment-subtitle { 
+        text-align: center; 
+        color: #a8a8a8; 
+        margin-bottom: 2.5rem; 
+        font-size: 1.1rem; 
+    }
+    .plan-grid { 
+            display: grid; 
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 24px; 
+        }
+        .plan-card { 
+            position: relative;
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 20px; 
+            padding: 28px; 
+            backdrop-filter: blur(20px); 
+            transition: all .3s ease; 
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 450px;
+        }
+        .plan-card:hover { 
+            transform: translateY(-6px); 
+            border-color: rgba(255,255,255,0.2); 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
+        }
+        /* 专业版高亮 */
+        .plan-card.highlight { 
+            border: 2px solid #667eea;
+            background: rgba(102, 126, 234, 0.08);
+            /* transform: scale(1.05); */
+        }
+        .plan-card.highlight:hover {
+            transform: scale(1.05) translateY(-6px);
+            border-color: #667eea;
+            box-shadow: 0 25px 80px rgba(102, 126, 234, 0.4);
+        }
+        .plan-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .plan-tag.starter { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .plan-tag.popular { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .plan-tag.value { background: linear-gradient(135deg, #ffecd2, #fcb69f); color: #333; }
+        .plan-tag.custom { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .plan-title { 
+            font-size: 1.6rem; 
+            font-weight: 700; 
+            margin-bottom: 16px; 
+            margin-top: 20px;
+            color: #ffffff;
+        }
+        .plan-subtitle {
+            color: #a8a8a8;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .plan-desc { 
+            color: #a8a8a8; 
+            font-size: .95rem; 
+            margin-bottom: 18px; 
+        }
+        .plan-price { 
+            font-size: 2.2rem; 
+            font-weight: 800; 
+            margin: 20px 0 16px; 
+            background: linear-gradient(135deg,#43e97b 0%,#38f9d7 100%); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+            background-clip: text; 
+        }
+        .plan-credits {
+            font-size: 1.1rem;
+            color: #9fb4ff;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .plan-unit {
+            font-size: 0.9rem;
+            color: #a8a8a8;
+            margin-bottom: 20px;
+        }
+        .plan-features {
+            list-style: none;
+            margin-bottom: 20px;
+            color: #d1d5db;
+            font-size: 0.95rem;
+            text-align: left;
+            flex-grow: 1;
+        }
+        .plan-features li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 22px;
+        }
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        .buy-btn { 
+            width: 100%; 
+            background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); 
+            color: #fff; 
+            padding: 14px 18px; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            box-shadow: 0 8px 32px rgba(102,126,234,0.3); 
+            cursor: pointer; 
+            transition: all .3s ease; 
+            border: none;
+        }
+        .buy-btn:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 12px 40px rgba(102,126,234,0.4); 
+        }
+        .payment-safe { 
+            margin-top: 16px; 
+            text-align: center; 
+            color: #6b7280; 
+            font-size: .9rem; 
+        }
+    </style>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17028841047"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-17028841047');
+    </script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cadbd1dd3863a178b126f2d9436d33bc";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</head>
+<body>
+    <!-- 购买积分 -->
+    <section class="payment-section" id="payment">
+        <div class="container">
+            <h2>购买积分</h2>
+            <p class="payment-subtitle">一次充值，畅享全平台 AI 功能</p>
+            
+            <div class="plan-grid">
+                <!-- 基础版 -->
+                <div class="plan-card">
+                    <div class="plan-tag starter">入门</div>
+                    <div class="plan-title">基础版</div>
+                    <div class="plan-price">$9.9</div>
+                    <div class="plan-credits">10积分</div>
+                    <div class="plan-unit">$0.99 / 积分 · 节省13%</div>
+                    <ul class="plan-features">
+                        <li>智能混剪 50个成片</li>
+                        <li>基础模板库</li>
+                        <li>基础技术支持</li>
+                    </ul>
+                    <button class="buy-btn showImageModal_buy">立即购买</button>
+                </div>
+
+                <!-- 进阶版 -->
+                <div class="plan-card">
+                    <div class="plan-tag popular">热门</div>
+                    <div class="plan-title">进阶版</div>
+                    <div class="plan-price">$29.9</div>
+                    <div class="plan-credits">60积分</div>
+                    <div class="plan-unit">$0.49 / 积分 · 节省23%</div>
+                    <ul class="plan-features">
+                        <li>智能混剪 300个成片</li>
+                        <li>基础模板库</li>
+                        <li>基础技术支持</li>
+                        <li>优先处理队列</li>
+                    </ul>
+                    <button class="buy-btn showImageModal_buy">立即购买</button>
+                </div>
+
+                <!-- 专业版 - 高亮推荐 -->
+                <div class="plan-card highlight">
+                    <div class="plan-tag value">超值</div>
+                    <div class="plan-title">专业版</div>
+                    <div class="plan-price">$49.9</div>
+                    <div class="plan-credits">120积分</div>
+                    <div class="plan-unit">$0.41 / 积分 · 节省31%</div>
+                    <ul class="plan-features">
+                        <li>智能混剪 600个成片</li>
+                        <li>基础模板库</li>
+                        <li>基础技术支持</li>
+                        <li>VIP处理队列</li>
+                        <li>1对1专属客服</li>
+                    </ul>
+                    <button class="buy-btn showImageModal_buy">立即购买</button>
+                </div>
+
+                <!-- 企业合作 -->
+                <div class="plan-card">
+                    <div class="plan-tag custom">定制</div>
+                    <div class="plan-title">企业合作</div>
+                    <div class="plan-subtitle" style="margin-top:50px;">按需定制・专属服务</div>
+                    <div class="plan-subtitle" style="margin-top:-5px;">联系销售享企业专属折扣</div>
+                    <ul class="plan-features" style="margin-top:30px;">
+                        <li>高级模板库</li>
+                        <li>定制技术支持</li>
+                        <li>VIP处理队列</li>
+                        <li>1对1专属客服</li>
+                        <li>新功能优先体验</li>
+                    </ul>
+                    <button class="buy-btn showImageModal_buy">立即购买</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 AI视频工具. 保留所有权利. | 隐私政策 | 服务条款</p>
+                <p>沪ICP备20009564号-14</p>
+            </div>
+        </div>
+    </footer>
+    <div class="alert-overlay" id="alertOverlay">
+        <div class="alert-box" id="alertBox">
+          <div class="alert-title">
+            <span class="alert-icon" id="alertIcon">ℹ️</span>
+            <span id="alertTitle">提示标题</span>
+          </div>
+          <p id="alertMessage">这是提示内容</p>
+          <button id="alertConfirm">确定</button>
+        </div>
+      </div>
+      <div id="overlay">
+        <div id="modal" style="width:220px;" onclick="event.stopPropagation()">
+            <img src="./lijigoumai.jpg?" style="width:200px;" alt="咨询">
+        </div>
+        </div>
+        <div id="overlay_buy">
+            <div id="modal_buy" style="text-align: center;padding:10px 30px;">
+                <h3>立即购买</h3>
+                <div style="width:200px;margin:10px auto;" onclick="event.stopPropagation()">
+                    <img src="./lijigoumai.jpg?" style="width:200px;" alt="购买">
+                </div>
+                <h3 style="font-size:16px;">扫码咨询，或联系你的销售</h3>
+            </div>
+        </div>
+      <script src="./jquery.js"></script>
+        
+      <script>
+        // 数字动画计数器
+        // function animateCounter(element) {
+        //     const target = parseInt(element.getAttribute('data-target'));
+        //     const duration = 2000; // 2秒动画
+        //     const step = target / (duration / 16); // 60fps
+        //     let current = 0;
+            
+        //     const timer = setInterval(() => {
+        //         current += step;
+        //         if (current >= target) {
+        //             element.textContent = target;
+        //             clearInterval(timer);
+        //         } else {
+        //             element.textContent = Math.floor(current);
+        //         }
+        //     }, 16);
+        // }
+
+        // // 滚动动画观察器
+        // const observerOptions = {
+        //     threshold: 0.3,
+        //     rootMargin: '0px 0px -50px 0px'
+        // };
+
+        // const observer = new IntersectionObserver((entries) => {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             entry.target.classList.add('visible');
+                    
+        //             // 如果是数据卡片，启动计数动画
+        //             const counters = entry.target.querySelectorAll('.counter');
+        //             counters.forEach(counter => {
+        //                 if (!counter.classList.contains('animated')) {
+        //                     counter.classList.add('animated');
+        //                     animateCounter(counter);
+        //                 }
+        //             });
+        //         }
+        //     });
+        // }, observerOptions);
+
+        // // 观察所有需要动画的元素
+        // document.querySelectorAll('.fade-in').forEach(el => {
+        //     observer.observe(el);
+        // });
+
+        // // 导航栏滚动效果
+        // window.addEventListener('scroll', () => {
+        //     const nav = document.querySelector('.nav');
+        //     if (window.scrollY > 50) {
+        //         nav.style.background = 'rgba(0, 0, 0, 0.95)';
+        //     } else {
+        //         nav.style.background = 'rgba(0, 0, 0, 0.8)';
+        //     }
+        // });
+
+        // // 平滑滚动
+        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        //     anchor.addEventListener('click', function (e) {
+        //         e.preventDefault();
+        //         const target = document.querySelector(this.getAttribute('href'));
+        //         if (target) {
+        //             target.scrollIntoView({
+        //                 behavior: 'smooth',
+        //                 block: 'start'
+        //             });
+        //         }
+        //     });
+        // });
+        // let industry = '';
+        // let featuresv = '';
+        // let bd_vid = getUrlParam("bd_vid");
+        // let u_source = getUrlParam('utm_source');
+        // let u_url = window.location.href;
+        // let u_keywords = escape(getUrlParam('keywords'));
+        // // 表单提交
+        // document.getElementById('trialForm').addEventListener('submit', function(e) {
+        //     e.preventDefault();
+        //     // 收集表单数据
+        //     const formData = new FormData(this);
+        //     const postdata = Object.fromEntries(formData);
+        //     postdata.industry = industry;
+        //     postdata.features = featuresv;
+        //     postdata.u_url = u_url;
+        //     if (bd_vid) {
+        //         postdata.bd_vid = bd_vid;
+        //     }
+        //     if (u_source) {
+        //         postdata.source = u_source;
+        //     }
+        //     if (u_keywords) {
+        //         postdata.keywords = u_keywords;
+        //     }
+        //     // 简单验证
+        //     if (!postdata.name || !postdata.email || !postdata.phone) {
+        //         showAlert('warning', '请填写必填项！', '');
+        //         return;
+        //     }
+        //     if (!isValidPhoneNumber(postdata.phone)) {
+        //         showAlert('warning', '手机号码格式不正确!', '');
+        //         return;
+        //     }
+        //     $('.submit-btn').html('提交中......');
+        //     $('.submit-btn').attr("disabled", true);
+        //     $.post("./add_user.php",postdata,function(data,status){
+        //         if (data.code == 200) {
+        //             showAlert('success', '申请提交成功！', '我们将在24小时内联系您，请注意查收邮件和电话。');
+        //             $('#trialForm')[0].reset();
+        //             selected.dataset.value = '';
+        //             selected1.dataset.value = '';
+        //             span.textContent = '请选择行业';
+        //             span1.textContent = '请选择';
+        //             industry = '';
+        //             featuresv = '';
+                    
+        //             if(!bd_vid){
+        //                 gtag('event', 'conversion', {
+        //                       'send_to': 'AW-17028841047/L61LCNLS2N0aENf8_bc_',
+        //                       'value': 1.0,
+        //                       'currency': 'USD'
+        //                 });
+        //             }
+                    
+        //         } else {
+        //             showAlert('error', '申请提交失败！', '请稍后再试!');
+        //         }
+        //         $('.submit-btn').attr("disabled", false);
+        //         $('.submit-btn').html('立即申请免费试用');
+        //     });
+        //     // 模拟提交
+        //     // const button = this.querySelector('.submit-btn');
+        //     // const originalText = button.textContent;
+        //     // button.textContent = '提交中...';
+        //     // button.disabled = true;
+            
+        //     // setTimeout(() => {
+        //     //     alert('申请提交成功！我们将在24小时内联系您，请注意查收邮件和电话。');
+        //     //     button.textContent = originalText;
+        //     //     button.disabled = false;
+        //     //     this.reset();
+        //     // }, 2000);
+        // });
+
+        // // 3D 卡片效果
+        // document.addEventListener('mousemove', (e) => {
+        //     const cards = document.querySelectorAll('.feature, .stat-card, .testimonial');
+        //     cards.forEach(card => {
+        //         const rect = card.getBoundingClientRect();
+        //         const x = e.clientX - rect.left;
+        //         const y = e.clientY - rect.top;
+                
+        //         if (x > 0 && x < rect.width && y > 0 && y < rect.height) {
+        //             const centerX = rect.width / 2;
+        //             const centerY = rect.height / 2;
+        //             const rotateX = (y - centerY) / 50;
+        //             const rotateY = (centerX - x) / 50;
+                    
+        //             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        //         } else {
+        //             card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        //         }
+        //     });
+        // });
+
+        // // 离开页面时重置卡片
+        // document.addEventListener('mouseleave', () => {
+        //     const cards = document.querySelectorAll('.feature, .stat-card, .testimonial');
+        //     cards.forEach(card => {
+        //         card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+        //     });
+        // });
+        // // 下拉框优化
+        // const selectBox = document.querySelector('.custom-select-box');
+        // const selectBox1 = document.querySelector('.custom-select-box1');
+        // const selected = selectBox.querySelector('.selected');
+        // const selected1 = selectBox1.querySelector('.selected1');
+        // const options = selectBox.querySelector('.options');
+        // const options1 = selectBox1.querySelector('.options1');
+        // const span = selected.querySelector('span');
+        // const span1 = selected1.querySelector('span');
+
+        // selected.addEventListener('click', () => {
+        //     options.style.display = options.style.display === 'block' ? 'none' : 'block';
+        // });
+        // selected1.addEventListener('click', () => {
+        //     options1.style.display = options1.style.display === 'block' ? 'none' : 'block';
+        // });
+        
+        // options.querySelectorAll('.option').forEach(option => {
+        //     option.addEventListener('click', () => {
+        //         const value = option.dataset.value;
+        //         const text = option.textContent;
+        //         industry = value;
+        //         span.textContent = text;
+        //         selected.dataset.value = value;
+        //         selected.classList.add('has-value');
+        //         options.style.display = 'none';
+        //     });
+        // });
+        // options1.querySelectorAll('.option').forEach(option => {
+        //     option.addEventListener('click', () => {
+        //         const value = option.dataset.value;
+        //         const text = option.textContent;
+        //         featuresv = value;
+        //         span1.textContent = text;
+        //         selected1.dataset.value = value;
+        //         selected1.classList.add('has-value');
+        //         options1.style.display = 'none';
+        //     });
+        // });
+
+        // document.addEventListener('click', (e) => {
+        //     if (!selectBox.contains(e.target)) {
+        //         options.style.display = 'none';
+        //     }
+        //     if (!selectBox1.contains(e.target)) {
+        //         options1.style.display = 'none';
+        //     }
+        // });
+
+        // $('.gotoUrl').click(function() {
+        //     if(bd_vid){
+        //         window.location.href = "https://performad.cn/yf_register.php?source=AiNative&bd_vid="+bd_vid;
+        //     } else {
+        //         window.location.href = "https://performad.cn/yf_register.php?source=AiNative";
+        //     }
+        // });
+
+        // function showAlert(type, title, message, onConfirm = null) {
+        //     const overlay = document.getElementById('alertOverlay');
+        //     const box = document.getElementById('alertBox');
+        //     const titleEl = document.getElementById('alertTitle');
+        //     const msgEl = document.getElementById('alertMessage');
+        //     const iconEl = document.getElementById('alertIcon');
+        //     const btn = document.getElementById('alertConfirm');
+
+        //     // 清除之前的类型样式
+        //     box.className = 'alert-box';
+        //     box.classList.add(type);
+
+        //     // 设置内容
+        //     titleEl.textContent = title;
+        //     msgEl.textContent = message;
+
+        //     // 设置图标
+        //     const iconMap = {
+        //       success: '✅',
+        //       error: '❌',
+        //       warning: '⚠️'
+        //     };
+        //     iconEl.textContent = iconMap[type] || 'ℹ️';
+
+        //     // 显示
+        //     overlay.style.display = 'flex';
+
+        //     // 点击按钮关闭并执行回调
+        //     btn.onclick = () => {
+        //       overlay.style.display = 'none';
+        //       if (typeof onConfirm === 'function') onConfirm();
+        //     };
+        // }
+        $(function(){
+            // $('.showImageModal').on('click', function() {
+            //     $('#overlay').attr('style', 'display: flex;');
+            // });
+            $('.showImageModal_buy').on('click', function() {
+                $('#overlay_buy').attr('style', 'display: flex;');
+            });
+            // $('#overlay').on('click', function() {
+            //     $('#overlay').attr('style', 'display: none;');
+            // });
+            $('#overlay_buy').on('click', function() {
+                $('#overlay_buy').attr('style', 'display: none;');
+            });
+        });
+        // function showImageModal() {
+        //     // document.getElementById('modal-img').src = imageUrl;
+        //     $('#overlay').attr('style', 'display: flex;');
+        // }
+
+        // function hideImageModal() {
+        //     document.getElementById('overlay').style.display = 'none';
+        //     // document.getElementById('modal-img').src = '';
+        // }
+        // function isValidPhoneNumber(input) {
+        //     const mobileRegex = /^1[2-9]\d{9}$/;
+        //     const landlineRegex = /^[\+]?[\d\-\(\)（）]{6,20}$/;
+
+        //     return mobileRegex.test(input) || landlineRegex.test(input);
+        // }
+        // function getUrlParam(name) {
+        //     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        //     var r = window.location.search.substr(1).match(reg); //匹配目标参数
+        //     if (r != null) return unescape(r[2]); return null; //返回参数值
+        // }
+    </script>
+    
+</body>
+</html>
+                
